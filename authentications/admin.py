@@ -7,6 +7,6 @@ from .models import *
 @admin.register(UserAccount)
 class postadmin(admin.ModelAdmin):
     
-    list_display = ['id','email']
+    list_display = ['id','roll_no','email','first_name','last_name','branch']
     class Meta:
         model = UserAccount

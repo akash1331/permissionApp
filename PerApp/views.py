@@ -2,6 +2,8 @@ from rest_framework.generics import ListAPIView
 from django_filters.rest_framework  import DjangoFilterBackend
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
+import authentications
+from authentications.models import *
 from .models import *
 from rest_framework.parsers import JSONParser
 from .serializers import *
@@ -81,6 +83,17 @@ class grantedfilter(ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['student_roll','granted'] 
 
+class branchfilter(ListAPIView):
+        queryset =  permission.objects.all()
+        serializer_class = PermissionSerializer
+        filter_backends = [DjangoFilterBackend]
+        filter_fields = ['branch'] 
+
+class branchgrant(ListAPIView):
+        queryset =  permission.objects.all()
+        serializer_class = PermissionSerializer
+        filter_backends = [DjangoFilterBackend]
+        filter_fields = ['branch','granted']
 
 class admingrantview(APIView):
     def get(self,request):
@@ -97,7 +110,7 @@ class admingrantview(APIView):
 
 
 class admingrant(APIView):
-    # if UserAccountManager.ACCOUNT_TYPEE == "SUPERADMIN" or UserAccountManager.ACCOUNT_TYPEE == "ADMIN":
+    # if UserAccount.type_of_account == "superadmin" or UserAccount.type_of_account == "admin":
         def get_object(self,id):
             try:
                 return permission.objects.get(id = id)

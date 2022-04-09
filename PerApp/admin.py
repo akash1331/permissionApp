@@ -5,7 +5,7 @@ from PerApp.models import *
 # Register your models here.
 
 class permissionAdminSite(admin.ModelAdmin):
-    list_display = ('roll_number','student_roll','date','from_time','out_date','reason','attachment','granted')
+    list_display = ('roll_number','student_roll','branch','date','from_time','out_date','reason','attachment','granted')
 
 
 admin.site.register(permission,permissionAdminSite)

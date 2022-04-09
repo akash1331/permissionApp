@@ -2,6 +2,7 @@ from datetime import date
 from django.db import models
 from django.db.models.deletion import SET_NULL
 from django.db.models.fields.files import ImageField
+from django.http import HttpResponse
 import qrcode
 from io import BytesIO
 from django.core.files import File
@@ -19,6 +20,7 @@ from authentications.models import UserAccount
 class permission(models.Model):
     roll_number =models.ForeignKey(UserAccount,on_delete=SET_NULL,null=True)
     student_roll=models.CharField(max_length=10,null=True) #added
+    branch=models.CharField(max_length=5,null=True) #added
     date = models.DateField(auto_now_add=True)
     from_time = models.TimeField(auto_now_add=False,null=True,blank=True)
     out_date = models.TimeField(auto_now_add=False,null=True,blank=True)
@@ -84,4 +86,3 @@ class permission(models.Model):
 
             print(message.sid)
             return super().save(*args,**kwargs)
-

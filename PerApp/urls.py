@@ -25,6 +25,8 @@ urlpatterns = [
     path('granted_roll/',grantedfilter.as_view()), #how to filter based on foreign key
     path('admingrant/',admingrantview.as_view()), #working
     path('admingrant/<int:id>',admingrant.as_view()), #working
+    path('branch/',branchfilter.as_view()), #working
+    path('branchgrant/',branchgrant.as_view()), #working
 ]
 
 
